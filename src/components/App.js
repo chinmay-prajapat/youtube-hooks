@@ -1,17 +1,16 @@
-import React,{useState,useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import SearchBar from "./SearchBar";
 import VideoList from "./VideoList";
 import VideoDetails from "./VideoDetails";
 import useVideos from "../hooks/useVideos";
 const App = () => {
-  const [selectedVideo, setSelectedVideo] = useState(null)
-  const [videos,search]=useVideos('building')
-  
+  const [selectedVideo, setSelectedVideo] = useState(null);
+  const [videos, search] = useVideos("building");
+
   useEffect(() => {
-  setSelectedVideo(videos[0])
-   
- },[videos])
-  
+    setSelectedVideo(videos[0]);
+  }, [videos]);
+
   return (
     <div className="ui container">
       <SearchBar onFormSubmit={search} />
@@ -21,16 +20,12 @@ const App = () => {
             <VideoDetails video={selectedVideo} />
           </div>
           <div className="five wide column">
-            <VideoList
-              onVideoSelect={selectedVideo}
-              videos={videos}
-            />
+            <VideoList onVideoSelect={selectedVideo} videos={videos} />
           </div>
         </div>
       </div>
     </div>
   );
-}
-
+};
 
 export default App;
